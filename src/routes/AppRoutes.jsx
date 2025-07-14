@@ -1,14 +1,23 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import DefaulLayout from "../layout/DefaulLayout.jsx";
-import Header from "../layout/Header.jsx";
-import Footer from "../layout/Footer.jsx";
-
+import HomePage from "../pages/HomePage.jsx"; 
+import MenuPage from "../pages/MenuPage.jsx";
+import EventPage from "../pages/EventPage.jsx";
+import ContactPage from "../pages/ContactPage.jsx";
+import BeMember from "../pages/BeMember.jsx";
+import CareerPage from "../pages/CareerPage.jsx";
 const AppRoutes = () => {
     return (
         <Routes>
-            {
+            {    //public routes
                 <Route path ="/" element= {<DefaulLayout/>}>
+                 <Route index element= {<HomePage/>}></Route>
+                 <Route path="/menu" element={<MenuPage/>} ></Route>
+                 <Route path="/event" element={<EventPage/>}></Route>
+                 <Route path="/contact" element={<ContactPage/>}></Route>
+                 <Route path="/bemember" element={<BeMember/>}></Route>
+                 <Route path="/career" element={<CareerPage/>}></Route>
 
 
                 </Route>

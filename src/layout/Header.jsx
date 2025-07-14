@@ -17,12 +17,12 @@ const Header = () => {
               <Link className="nav-link text-dark" to="/menu">Menus</Link>
               <Link className="nav-link text-dark" to="/event">Events</Link>
               <Link className="nav-link text-dark" to="/contact">Contact</Link>
-              <Link className="nav-link text-dark" to="/event">Be a member</Link>
+              <Link className="nav-link text-dark" to="/bemember">Be a member</Link>
               <Link className="nav-link text-dark" to="/career">Careers</Link> 
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>; 
+      </Navbar>
     </>
   );
 };
