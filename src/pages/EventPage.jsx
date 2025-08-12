@@ -9,8 +9,7 @@ const EventsPage = () => {
       <HeroParallax
         image="/images/restEventBack.png" // replace with your image path
         title="Host Your Event at THP"
-        subtitle="Creating memorable experiences, one celebration at a time."
-         titleColor="#f8f3f3ff" // burnt orange
+         titleColor="#f8f3f3ff"
       />
 
       {/* Overview */}

@@ -9,7 +9,6 @@ const BookingPage = () => {
       <HeroParallax
         imageUrl="/images/booking-hero.jpg"
         title="Book Your Experience at THP"
-        subtitle="Cocktails, good vibes, and great company."
       />
 
       {/* Booking Section */}

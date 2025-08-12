@@ -1,4 +1,4 @@
-import HeroParallax from "../components/HeroParallax"; 
+import HeroParallax from "../components/HeroParallax";
 
 export default function ContactPage() {
   return (
@@ -6,8 +6,7 @@ export default function ContactPage() {
       {/* Optional hero—delete if you don't want it */}
       <HeroParallax
         title="Contact"
-        subtitle="We’re here to help with bookings and events."
-      image="/images/restContBack.png"
+        image="/images/restContBack.png"
         height={600}
         titleColor="#f8f3f3ff"
       />
@@ -33,9 +32,7 @@ export default function ContactPage() {
 
               <div className="contact-block">
                 <h6 className="contact-heading">Address</h6>
-                <p className="mb-2">
-                  15 Sample St, Sydney NSW 2000
-                </p>
+                <p className="mb-2">15 Sample St, Sydney NSW 2000</p>
                 <a
                   className="contact-link"
                   href="https://maps.google.com/?q=The+Hidden+Pour+Sydney"
@@ -48,7 +45,10 @@ export default function ContactPage() {
 
               <div className="contact-block">
                 <h6 className="contact-heading">Email</h6>
-                <a className="contact-link" href="mailto:bookings@hiddenpour.com">
+                <a
+                  className="contact-link"
+                  href="mailto:bookings@hiddenpour.com"
+                >
                   bookings@hiddenpour.com
                 </a>
               </div>
@@ -68,20 +68,30 @@ export default function ContactPage() {
                   <li>Fri – Sat: 11:30am – 10:00pm</li>
                   <li>Sun: 11:30am – 9:00pm</li>
                 </ul>
-                <p className="text-muted small mb-0">Kitchen opens from 12pm.</p>
+                <p className="text-muted small mb-0">
+                  Kitchen opens from 12pm.
+                </p>
               </div>
 
               <div className="contact-block">
                 <h6 className="contact-heading">Groups & Events</h6>
                 <p className="mb-2">
-                  For event enquiries or larger bookings, please see our events page or email us.
+                  For event enquiries or larger bookings, please see our events
+                  page or email us.
                 </p>
-                <a className="contact-link" href="/events">Explore events →</a>
+                <a className="contact-link" href="/events">
+                  Explore events →
+                </a>
               </div>
 
               <div className="d-flex gap-3 mt-4">
-                <a className="btn btn-thp" href="/booking">Make a booking</a>
-                <a className="btn btn-thp-outline" href="mailto:bookings@hiddenpour.com">
+                <a className="btn btn-thp" href="/booking">
+                  Make a booking
+                </a>
+                <a
+                  className="btn btn-thp-outline"
+                  href="mailto:bookings@hiddenpour.com"
+                >
                   Email us
                 </a>
               </div>

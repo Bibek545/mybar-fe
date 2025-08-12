@@ -1,4 +1,4 @@
-// 
+//
 
 import React, { useState } from "react";
 import HeroParallax from "../components/HeroParallax.jsx";
@@ -23,8 +23,16 @@ const MENU_DATA = {
     { name: "Eggplant chips", desc: "spiced honey", price: 14 },
   ],
   Cocktails: [
-    { name: "Smoked Velvet", desc: "Mezcal, vanilla, cacao bitters", price: 23 },
-    { name: "Velour Negroni", desc: "Barrel gin, cacao nib Campari", price: 23 },
+    {
+      name: "Smoked Velvet",
+      desc: "Mezcal, vanilla, cacao bitters",
+      price: 23,
+    },
+    {
+      name: "Velour Negroni",
+      desc: "Barrel gin, cacao nib Campari",
+      price: 23,
+    },
   ],
   Wines: [
     { name: "Prosecco — Veneto", desc: "glass", price: 14 },
@@ -51,9 +59,8 @@ export default function TabsMenu() {
 
   return (
     <div className="menu-tabs-page">
-            <HeroParallax
+      <HeroParallax
         title="The Hidden Pour Menu "
-        subtitle="Seasonal plates, crafted cocktails."
         image="/images/restMenuBack.png"
         titleColor="#f8f3f3ff"
         height={600}
