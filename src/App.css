@@ -561,3 +561,22 @@ a.text-orange:hover { color: var(--thp-primary-hover) !important; text-decoratio
 @media (max-width: 991px){
   .order-md-2 { margin-top: 1rem; }
 }
+
+/* this is for thr home paage */
+.btn-thp {
+  background-color: #D97B3F;
+  color: white;
+  border: none;
+}
+
+.btn-thp-outline {
+  background-color: transparent;
+  border: 2px solid #D97B3F;
+  color: #D97B3F;
+}
+
+.btn-thp:hover,
+.btn-thp-outline:hover {
+  background-color: #bf652f;
+  color: white;
+}
