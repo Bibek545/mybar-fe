@@ -1,9 +1,3 @@
-Awesome! That’s a great start to your README. A clear and detailed README not only helps others understand your project, but also keeps **you organized** as you build your frontend (and later backend).
-
-Here’s a suggested **template** to structure your README as you work on your bar website frontend:
-
----
-
 ## 🍸 The Hidden Pour — Bar Website (Frontend)
 
 ### 📍 Project Overview
