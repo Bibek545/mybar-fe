@@ -25,7 +25,7 @@ const HomePage = () => {
           <Button href="/booking" className="btn-thp">
             Make a Booking
           </Button>
-          <Button href="/menus" className="btn-thp-outline">
+          <Button href="/menu" className="btn-thp-outline">
             View Menu
           </Button>
         </div>

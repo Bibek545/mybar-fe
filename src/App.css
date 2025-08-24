@@ -580,3 +580,152 @@ a.text-orange:hover { color: var(--thp-primary-hover) !important; text-decoratio
   background-color: #bf652f;
   color: white;
 }
+
+
+/* this is for the sidebar.jsx */
+/* ===== Sidebar Styles for The Hidden Pour ===== */
+/* SIDEBAR LAYOUT */
+.thp-sidebar {
+  background-color: #ffffff; /* Clean white background */
+  border-right: 1px solid #e7e7e7;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* NAV LINKS IN SIDEBAR */
+/* Sidebar full height + spacing below navbar */
+.thp-sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #f0f0f0;
+  min-height: calc(100vh - 56px); /* Adjust based on navbar height */
+  padding: 1.5rem 1rem;
+  margin-top: 56px; /* To push below fixed navbar */
+  position: sticky;
+  top: 56px;
+}
+
+/* Sidebar greeting */
+.sidebar-greeting {
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.sidebar-greeting span {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.sidebar-greeting h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #D97B3F;
+}
+
+/* Sidebar brand title */
+.thp-sidebar h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2B2B2B;
+  padding-left: 0.5rem;
+}
+
+/* Nav links */
+.thp-sidebar .nav-link {
+  color: #2B2B2B;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s ease;
+}
+
+/* Icons in nav */
+.thp-sidebar .nav-link svg {
+  font-size: 1.1rem;
+}
+
+/* Hover state */
+.thp-sidebar .nav-link:hover {
+  background-color: #fbeee0;
+  color: #D97B3F;
+  text-decoration: none;
+}
+
+/* Optional: active state */
+.thp-sidebar .nav-link.active {
+  background-color: #f3e1cd;
+  color: #D97B3F;
+  font-weight: 600;
+}
+
+
+/* this is for the sidebar.jsx */
+/* ===== Sidebar Styles for The Hidden Pour ===== */
+
+
+/* user perks */
+
+.perk-card {
+  border: 1px solid #eee;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+  background-color: #fff;
+}
+
+.perk-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.badge-earn {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.badge-limited {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.badge-occasion {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.badge-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/* user perks */
+
+
+/* booking page */
+
+.text-orange {
+  color: #D97B3F;
+}
+
+.btn-thp {
+  background-color: #000;
+  color: #D97B3F;
+  border: 1px solid #D97B3F;
+  transition: all 0.3s ease;
+}
+
+.btn-thp:hover {
+  background-color: #D97B3F;
+  color: #fff;
+  border-color: #D97B3F;
+}
+
+
+/* booking page */
