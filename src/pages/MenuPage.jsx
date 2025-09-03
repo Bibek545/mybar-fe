@@ -1,104 +1,95 @@
-//
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeroParallax from "../components/HeroParallax.jsx";
-// import heroMenu from "../assets/restMenuBack.png"
+import { getAllMenuItemsApi } from "../services/authAPI.jsx";
 
-/* ---- Example data (swap with your real menu later) ---- */
-const MENU_DATA = {
-  "Lunch & Dinner": [
-    { name: "Coal-roasted chicken", desc: "garlic & herb jus", price: 34 },
-    { name: "Market fish", desc: "burnt lemon & dill", price: 36 },
-    { name: "Crispy Potatoes with French onion dip and chives", price: 22 },
-  ],
-  Banquets: [
-    { name: "Chef’s Feast", desc: "Shared courses for the table", price: 79 },
-    { name: "Vegetarian Feast", desc: "Seasonal veg & grains", price: 69 },
-  ],
-  "Family Feast": [
-    { name: "Whole roast chicken + 3 sides", desc: "feeds 3–4", price: 95 },
-  ],
-  "Bar Snacks": [
-    { name: "Crispy potatoes", desc: "French onion dip, chives", price: 16 },
-    { name: "Eggplant chips", desc: "spiced honey", price: 14 },
-  ],
-  Cocktails: [
-    {
-      name: "Smoked Velvet",
-      desc: "Mezcal, vanilla, cacao bitters",
-      price: 23,
-    },
-    {
-      name: "Velour Negroni",
-      desc: "Barrel gin, cacao nib Campari",
-      price: 23,
-    },
-  ],
-  Wines: [
-    { name: "Prosecco — Veneto", desc: "glass", price: 14 },
-    { name: "Pinot Noir — Yarra Valley", desc: "glass", price: 15 },
-  ],
-  Beer: [
-    { name: "Lager — local", desc: "tap", price: 10 },
-    { name: "Pale Ale — can", desc: "375ml", price: 11 },
-  ],
-  "Free From Booze": [
-    { name: "Plum & Myrtle Spritz", desc: "Davidson plum, fizz", price: 16 },
-    { name: "Citrus Garden", desc: "Mandarin, verbena, tonic", price: 16 },
-  ],
-  "Happy Hour": [
-    { name: "House Spritz", desc: "4–6pm", price: 12 },
-    { name: "Selected beers", desc: "4–6pm", price: 7 },
-  ],
-};
-
-const categories = Object.keys(MENU_DATA);
+const CATEGORY_OPTIONS = [
+  "Lunch & Dinner",
+  "Banquets",
+  "Family Feast",
+  "Bar Snacks",
+  "Cocktails",
+  "Wines",
+  "Beer",
+  "Free From Booze",
+  "Happy Hour",
+];
 
 export default function TabsMenu() {
-  const [active, setActive] = useState(categories[0]);
+  const [active, setActive] = useState(CATEGORY_OPTIONS[0]);
+  const [menuData, setMenuData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const res = await getAllMenuItemsApi();
+      if (res.status === "success") {
+        const grouped = res.data.reduce((acc, item) => {
+          acc[item.category] = acc[item.category] || [];
+          acc[item.category].push(item);
+          return acc;
+        }, {});
+        setMenuData(grouped);
+      } else {
+        setError(res.message || "Failed to load menu.");
+      }
+      setLoading(false);
+    })();
+  }, []);
 
   return (
-    <div className="menu-tabs-page">
+    <div className="menu-page">
       <HeroParallax
-        title="The Hidden Pour Menu "
+        title="The Hidden Pour Menu"
         image="/images/restMenuBack.png"
         titleColor="#f8f3f3ff"
-        height={600}
+        height={520}
       />
-      {/* Sticky tab bar */}
-      <div className="menu-tabs-wrapper sticky-top">
-        <div className="container">
-          <div className="menu-tabs overflow-auto">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`menu-tab ${active === cat ? "active" : ""}`}
-                onClick={() => setActive(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-          <div className="menu-tabs-underline" />
+
+      {/* Tabs */}
+      <div className="menu-tabs-bar">
+        <div className="container menu-tabs-scroll">
+          {CATEGORY_OPTIONS.map((cat) => (
+            <button
+              key={cat}
+              className={`tab-btn ${active === cat ? "is-active" : ""}`}
+              onClick={() => setActive(cat)}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Content */}
-      <div className="container py-4 py-md-5">
-        <h2 className="cm-title mb-3">{active}</h2>
-        <ul className="list-unstyled mb-0">
-          {MENU_DATA[active].map((it, i) => (
-            <li key={i} className="cm-row">
-              <div className="cm-line">
-                <div className="cm-item">
-                  <div className="cm-name">{it.name}</div>
-                  <div className="cm-desc text-muted">{it.desc}</div>
-                </div>
-                <div className="cm-price">${it.price}</div>
+      <div className="container py-5">
+        <h2 className="menu-section-title mb-4">{active}</h2>
+        {loading && <p>Loading…</p>}
+        {error && <p className="text-danger">{error}</p>}
+
+        <div className="menu-grid">
+          {menuData[active]?.map((it) => (
+            <div key={it._id} className="menu-card">
+              {it.imageUrl && (
+                <img src={it.imageUrl} alt="" className="menu-thumb" />
+              )}
+              <div className="menu-info">
+                <h5 className="menu-name">{it.name}</h5>
+                {it.description && (
+                  <p className="menu-desc">{it.description}</p>
+                )}
               </div>
-            </li>
+              <div className="menu-price">${Number(it.price).toFixed(2)}</div>
+            </div>
           ))}
-        </ul>
+
+          {!loading && !menuData[active]?.length && (
+            <div className="empty-card">
+              <p>🍽️ No items in this category yet.</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

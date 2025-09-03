@@ -1,6 +1,7 @@
 import React from "react";
 import HeroParallax from "../components/HeroParallax"; // your existing parallax hero
 import { Container, Row, Col, Button } from "react-bootstrap";
+import OngoingEvents from "./OngoingEventsPage";
 
 const EventsPage = () => {
   return (
@@ -11,7 +12,8 @@ const EventsPage = () => {
         title="Host Your Event at THP"
          titleColor="#f8f3f3ff"
       />
-
+     
+     <OngoingEvents />
       {/* Overview */}
       <Container className="py-5">
         <p>

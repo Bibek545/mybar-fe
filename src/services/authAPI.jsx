@@ -4,6 +4,7 @@
 import { apiProcessor } from "./api";
 
 const apiBaseUrl = "http://localhost:8020";
+const adminApiBaseUrl = "http://localhost:8040";
 const authApiEP = apiBaseUrl + "/api/v1/auth";
 
 export const signUpNewUserApi = async (payload) => {
@@ -80,4 +81,79 @@ export const resetPassApi = async (payload) => {
         showToast: true,
     };
     return apiProcessor(obj);
-}
+};
+
+
+// MEMBER (auth; apiProcessor should attach the Bearer automatically,
+// if not, add headers: { Authorization: `Bearer ${token}` } here)
+export const createBookingApi = async (payload) => {
+  return apiProcessor({
+    url: `${apiBaseUrl}/api/v1/booking`,
+    method: "post",
+    payload,
+    showToast: true,
+  });
+};
+
+export const createMemberBookingApi = async (payload) => {
+  return apiProcessor({
+    url: `${apiBaseUrl}/api/v1/booking/members`, // ✅ member route
+    method: "post",
+    payload, // date, time, guests, allergies, notes (identity read from token)
+    showToast: true,
+        isPrivateCall: true, 
+    
+  });
+};
+
+// ---- Prefill current user (auth) ----
+export const getMeApi = async (payload) => {
+  return apiProcessor({
+    url: `${apiBaseUrl}/api/v1/users/me`,
+    method: "get",
+    payload,
+  });
+};
+
+// list my bookings (auth)
+export const getMyBookingsApi = async (payload) => {
+  return apiProcessor({
+    url: `${apiBaseUrl}/api/v1/booking/members/me`,
+    method: "get",
+    payload,
+    isPrivateCall: true,        
+    
+  });
+};
+
+// deleting or canceling the events
+
+export const cancelMyBookingApi = async (_id, payload)=> {
+  const obj = {
+    url: `${apiBaseUrl}/api/v1/booking/members/${_id}/cancel`,
+    method: "patch",
+    payload,
+    showToast: true,
+  };
+  return apiProcessor(obj);
+};
+//fetching the menu
+export const getAllMenuItemsApi = async () => {
+  const obj = {
+    url: adminApiBaseUrl + "/api/v1/menu",
+    method: "get"
+  };
+  return apiProcessor(obj);
+};
+
+
+
+//fetching the events
+export const getAllEventItemsApi = async () => {
+  const obj = {
+    url: adminApiBaseUrl + "/api/v1/event/public",
+    method: "get",
+    isPublic: true
+  };
+  return apiProcessor(obj);
+};

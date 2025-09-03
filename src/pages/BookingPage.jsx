@@ -1,15 +1,62 @@
-import React from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 import HeroParallax from "../components/HeroParallax";
+import { createBookingApi } from "../services/authAPI.jsx";
 
 const BookingPage = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    guests: 2,
+    date: "",
+    time: "",
+    notes: "", // maps to "Special Requests"
+  });
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSuccess("");
+    setError("");
+
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      guests: Number(form.guests),
+      date: form.date,     // "YYYY-MM-DD" (backend can new Date() it)
+      time: form.time,     // "HH:MM"
+      notes: form.notes.trim(),
+    };
+
+    const res = await createBookingApi(payload);
+    if (res?.status === "success") {
+      setSuccess("Thanks! Your booking request has been received.");
+      setForm({ name: "", email: "", phone: "", guests: 2, date: "", time: "", notes: "" });
+    } else {
+      setError(res?.message || "Could not submit booking. Please try again.");
+    }
+
+    setSubmitting(false);
+  };
+
   return (
     <div>
       {/* Hero */}
       <HeroParallax
         imageUrl="/images/booking-hero.jpg"
         title="Book Your Experience at THP"
-         height={300}
+        height={300}
       />
 
       {/* Booking Section */}
@@ -27,19 +74,36 @@ const BookingPage = () => {
                     </p>
                   </div>
 
-                  <Form>
+                  {success && <Alert variant="success">{success}</Alert>}
+                  {error && <Alert variant="danger">{error}</Alert>}
+
+                  <Form onSubmit={onSubmit}>
                     {/* Name + Email */}
                     <Row>
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>👤 Name</Form.Label>
-                          <Form.Control type="text" placeholder="John Doe" required />
+                          <Form.Control
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={onChange}
+                            placeholder="John Doe"
+                            required
+                          />
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>📧 Email</Form.Label>
-                          <Form.Control type="email" placeholder="john@email.com" required />
+                          <Form.Control
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={onChange}
+                            placeholder="john@email.com"
+                            required
+                          />
                         </Form.Group>
                       </Col>
                     </Row>
@@ -49,13 +113,27 @@ const BookingPage = () => {
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>📱 Phone</Form.Label>
-                          <Form.Control type="tel" placeholder="04xx xxx xxx" required />
+                          <Form.Control
+                            type="tel"
+                            name="phone"
+                            value={form.phone}
+                            onChange={onChange}
+                            placeholder="04xx xxx xxx"
+                          />
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>🧑‍🤝‍🧑 Guests</Form.Label>
-                          <Form.Control type="number" min="1" max="20" defaultValue="2" />
+                          <Form.Control
+                            type="number"
+                            name="guests"
+                            min="1"
+                            max="20"
+                            value={form.guests}
+                            onChange={onChange}
+                            required
+                          />
                         </Form.Group>
                       </Col>
                     </Row>
@@ -65,13 +143,25 @@ const BookingPage = () => {
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>📅 Date</Form.Label>
-                          <Form.Control type="date" required />
+                          <Form.Control
+                            type="date"
+                            name="date"
+                            value={form.date}
+                            onChange={onChange}
+                            required
+                          />
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label>⏰ Time</Form.Label>
-                          <Form.Control type="time" required />
+                          <Form.Control
+                            type="time"
+                            name="time"
+                            value={form.time}
+                            onChange={onChange}
+                            required
+                          />
                         </Form.Group>
                       </Col>
                     </Row>
@@ -82,13 +172,16 @@ const BookingPage = () => {
                       <Form.Control
                         as="textarea"
                         rows={3}
+                        name="notes"
+                        value={form.notes}
+                        onChange={onChange}
                         placeholder="Allergies, preferences, occasion..."
                       />
                     </Form.Group>
 
                     <div className="text-center">
-                      <Button className="btn-thp px-5" type="submit">
-                        Submit Booking
+                      <Button className="btn-thp px-5" type="submit" disabled={submitting}>
+                        {submitting ? "Submitting…" : "Submit Booking"}
                       </Button>
                     </div>
                   </Form>

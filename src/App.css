@@ -729,3 +729,157 @@ a.text-orange:hover { color: var(--thp-primary-hover) !important; text-decoratio
 
 
 /* booking page */
+
+
+/* this is for the menu */
+/* sticky tabs bar */
+.menu-tabs-bar {
+  position: sticky;
+  top: 60px;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.menu-tabs-scroll {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+.tab-btn.is-active {
+  background: #D97B3F;
+  color: #fff;
+  border-color: #D97B3F;
+}
+
+/* menu section */
+.menu-section-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* card grid */
+.menu-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.menu-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.menu-info {
+  flex: 1;
+}
+.menu-name {
+  margin: 0;
+  font-weight: 600;
+}
+.menu-desc {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+.menu-price {
+  font-weight: 700;
+  color: #D97B3F;
+  background: #F6E7DE;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+}
+
+/* empty */
+.empty-card {
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #777;
+}
+
+
+/* this is for the event slides */
+/* Landscape slide frame */
+/* centers the card within the full-width carousel */
+/* center the card within the carousel */
+.ongoing-center {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+/* make the card narrower and a touch taller */
+.ongoing-card.compact {
+  width: min(760px, 60vw);   /* ↓ narrower (was 70vw). try 58–62vw */
+  max-height: 56vh;          /* ↑ slightly taller than before */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;    /* image on top, text below */
+  align-items: center;
+}
+
+/* show full image without zooming/cropping */
+.ongoing-card.compact .ongoing-img {
+  width: 100%;
+  height: clamp(220px, 34vh, 380px);  /* a bit more height */
+  object-fit: contain;                /* 👈 no crop; no zoom-in */
+  object-position: center;
+  background: #f7f7f7;                /* letterbox fill */
+  display: block;
+}
+
+/* centered title + button under the image */
+.ongoing-card.compact .ongoing-info {
+  padding: 1rem 1.25rem 1.2rem;
+  text-align: center;
+}
+.ongoing-card.compact .ongoing-name {
+  margin: 0 0 .55rem;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+}
+.ongoing-card.compact .btn-outline {
+  border: 1px solid #D97B3F;
+  color: #D97B3F;
+  background: #fff;
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.ongoing-card.compact .btn-outline:hover { background: #F6E7DE; }
+
+/* mobile */
+@media (max-width: 768px) {
+  .ongoing-card.compact {
+    width: 92vw;
+    max-height: none;
+  }
+  .ongoing-card.compact .ongoing-img {
+    height: clamp(180px, 30vh, 320px);
+  }
+}
+
+/* optional: move dots a bit lower so they don't overlap the button */
+.carousel-indicators { bottom: -10px; }
