@@ -883,3 +883,15 @@ a.text-orange:hover { color: var(--thp-primary-hover) !important; text-decoratio
 
 /* optional: move dots a bit lower so they don't overlap the button */
 .carousel-indicators { bottom: -10px; }
+
+.cursor-pointer { cursor: pointer; }
+
+.perk-card {
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.perk-card:hover,
+.perk-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.08);
+  outline: none;
+}

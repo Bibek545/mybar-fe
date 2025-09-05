@@ -157,3 +157,14 @@ export const getAllEventItemsApi = async () => {
   };
   return apiProcessor(obj);
 };
+
+
+// getting the rewards
+export const getMyRewardsApi = async () => {
+  const obj = {
+    url: `${apiBaseUrl}/api/v1/rewards/me`,
+    method: "get",
+    isPrivateCall: true,
+  };
+  return apiProcessor(obj);
+};

@@ -1,6 +1,7 @@
 // src/pages/user/UserEvents.jsx
 import React from "react";
 import { Card, Button, Badge, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const events = [
   {
@@ -36,7 +37,10 @@ const UserEvents = () => {
   return (
     <div>
       <h4 className="mb-4">📅 Events & Experiences</h4>
-      <p>Discover upcoming happenings and past highlights at <strong>The Hidden Pour</strong>.</p>
+      <p>
+        Discover upcoming happenings and past highlights at{" "}
+        <strong>The Hidden Pour</strong>.
+      </p>
 
       {/* Upcoming Events */}
       <section className="mt-4">
@@ -54,9 +58,15 @@ const UserEvents = () => {
                     {event.date} at {event.time}
                   </Card.Text>
                   <Card.Text>{event.description}</Card.Text>
-                  <Button variant="outline-dark" size="sm" href="/booking">
-                    Book Now
-                  </Button>
+                  <Link to="/user/book-table">
+                    <Button
+                      variant="outline-dark"
+                      className="text-orange border-orange px-4"
+                    >
+                      {" "}
+                      Book Now
+                    </Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
