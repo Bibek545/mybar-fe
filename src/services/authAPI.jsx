@@ -3,8 +3,17 @@
 
 import { apiProcessor } from "./api";
 
-const apiBaseUrl = "http://localhost:8020";
-const adminApiBaseUrl = "http://localhost:8040";
+// const apiBaseUrl = "http://localhost:8020";
+const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com/";
+
+// http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com/
+
+// const adminApiBaseUrl = "http://localhost:8040";
+const adminApiBaseUrl = "http://thp-admin-be-env.eba-pejytbmb.ap-southeast-2.elasticbeanstalk.com/";
+
+
+// http://thp-admin-be-env.eba-pejytbmb.ap-southeast-2.elasticbeanstalk.com/
+
 const authApiEP = apiBaseUrl + "/api/v1/auth";
 
 export const signUpNewUserApi = async (payload) => {
