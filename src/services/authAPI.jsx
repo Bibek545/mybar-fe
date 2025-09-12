@@ -4,7 +4,7 @@
 import { apiProcessor } from "./api";
 
 // const apiBaseUrl = "http://localhost:8020";
-const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com/";
+const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com";
 
 // http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com/
 
