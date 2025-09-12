@@ -9,7 +9,7 @@ const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeansta
 // http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com/
 
 // const adminApiBaseUrl = "http://localhost:8040";
-const adminApiBaseUrl = "http://thp-admin-be-env.eba-pejytbmb.ap-southeast-2.elasticbeanstalk.com/";
+const adminApiBaseUrl = "http://thp-admin-be-env.eba-pejytbmb.ap-southeast-2.elasticbeanstalk.com";
 
 
 // http://thp-admin-be-env.eba-pejytbmb.ap-southeast-2.elasticbeanstalk.com/
