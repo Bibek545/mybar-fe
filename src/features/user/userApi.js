@@ -1,6 +1,8 @@
 import { apiProcessor } from "../../services/api";
 
-const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com"
+// const apiBaseUrl = "http://thp-be-env.eba-xy2dbsaa.ap-southeast-2.elasticbeanstalk.com"
+
+ const apiBaseUrl = "https://mybar-be.onrender.com"
 const userApiEP = apiBaseUrl + "/api/v1/user"
 
 
